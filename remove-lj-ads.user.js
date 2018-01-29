@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         remove-lj-ads
 // @namespace    http://tampermonkey.net/
-// @version      0.2
+// @version      0.3
 // @description  delete annoying stuff from livejournal pages
 // @author       You
 // @match        http://*.livejournal.com/*
@@ -31,7 +31,7 @@
     }
 
     function clean() {
-        document.querySelectorAll('.sidebar-inner, #hello-world, .b-discoverytimes-wrapper').forEach(e => e.remove());
+        document.querySelectorAll('.sidebar-inner, #hello-world, .b-discoverytimes-wrapper, [id^=begun_block]').forEach(e => e.remove());
     }
 
     let cleanTimer = setInterval(clean, 5000);
