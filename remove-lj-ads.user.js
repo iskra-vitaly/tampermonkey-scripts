@@ -11,31 +11,15 @@
 
 (function() {
     'use strict';
-    function jq(wnd) {
-        if (wnd.jQuery) {
-            console.log("jquery found in", wnd.location);
-            return wnd.jQuery;
-        } else {
-            let parent = wnd.parent;
-            if (parent && parent != wnd) {
-                return jq(parent);
-            } else {
-                console.log("jquery not found in", wnd.location);
-                return null;
-            }
-        }
-    }
-
-    let $ = jq(window);
     let mo = window.MutationObserver || window.WebKitMutationObserver;
-    console.log('LJ ad remove');
-    console.log('window.MutationObserver=', mo);
+//    console.log('window.MutationObserver=', mo);
     var observer = new mo(function(mutations) {
         for (let m of mutations) {
-            console.log('mutation', m);
+//            console.log('mutation', m);
             if (m.type === 'childList') {
                 for (let n of m.addedNodes) {
                     if (n.id && /^begun_block/.exec(n.id)) {
+                        console.log('removed ad!!!', n);
                         n.remove();
                     }
                 }
@@ -43,12 +27,17 @@
         }
     });
 
-    // configuration of the observer:
-    var config = {childList: true, subtree: true };
+    var observerConfig = {childList: true, subtree: true };
+    for (let block of document.querySelectorAll('.content-inner')) {
+        observer.observe(block, observerConfig);
+    }
 
-    // pass in the target node, as well as the observer options
+    function clean() {
+        document.querySelectorAll('.sidebar-inner, #hello-world, .b-discoverytimes-wrapper').forEach(e => e.remove());
+    }
 
-    $('.content-inner').each(function(i, el){observer.observe(el, config);});
+    let cleanTimer = setInterval(clean, 5000);
+    clean();
 
-    $('.sidebar-inner').remove();
+    console.log('LJ ad remove activated');
 })();
