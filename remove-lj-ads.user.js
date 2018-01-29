@@ -2,7 +2,7 @@
 // @name         remove-lj-ads
 // @namespace    http://tampermonkey.net/
 // @version      0.2
-// @description  try to take over the world!
+// @description  delete annoying stuff from livejournal pages
 // @author       You
 // @match        http://*.livejournal.com/*
 // @grant        none
