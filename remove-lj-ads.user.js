@@ -1,10 +1,10 @@
 // ==UserScript==
 // @name         remove-lj-ads
 // @namespace    http://tampermonkey.net/
-// @version      0.3
+// @version      0.4
 // @description  delete annoying stuff from livejournal pages
 // @author       You
-// @match        http://*.livejournal.com/*
+// @match        http*://*.livejournal.com/*
 // @grant        none
 // ==/UserScript==
 
