@@ -5,6 +5,7 @@
 // @description  delete annoying stuff from livejournal pages
 // @author       You
 // @match        http*://*.livejournal.com/*
+// @match        http*://varlamov.ru/*
 // @grant        none
 // ==/UserScript==
 
