@@ -206,7 +206,7 @@ async function addButton() {
     newElement.addEventListener('click', async (e) => {
         let productCode = pluginDetail?.purchaseInfo?.productCode;
         if (productCode === undefined) {
-            window.alert('该插件不是市场付费插件！');
+            window.alert('This plugin is not a paid plugin in the market!');
             return;
         }
         let licenseId = genLicenseId()
@@ -221,7 +221,7 @@ async function addButton() {
         let cert_base64 = pem2base64(pemEncodedCrt);
 
         GM_setClipboard(`${licenseId}-${licensePartBase64}-${sigResultsBase64}-${cert_base64}`, 'text');
-        window.alert('激活码已经拷贝到你的剪切板');
+        window.alert('The activation code has been copied to your clipboard');
     })
 }
 
